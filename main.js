@@ -9,6 +9,9 @@ po kliknięciu wykonaj ma byc powitanie 'witaj Panie Pani w zależności od sex 
 
 
 let $checkInfo = document.querySelector('.checkInfo');
+let $wrapper_calc = document.querySelector('.wrapper-calculator');
+$wrapper_calc.style.display = 'none';
+
 
 function displayInfo() {
     let $input = document.querySelector('.inputName').value;
@@ -17,6 +20,7 @@ function displayInfo() {
     let $sexWoman = document.querySelector('.sexWoman').checked;
     let $p = document.querySelector('p');
     let $wrapper = document.querySelector('.wrapper');
+
     console.log($wrapper);
     /* console.log($input);
     console.log($age);
@@ -50,6 +54,7 @@ function displayInfo() {
     }
 
     $wrapper.style.display = 'none';
+    $wrapper_calc.style.display = 'block';
 }
 
 $checkInfo.addEventListener('click', displayInfo);
