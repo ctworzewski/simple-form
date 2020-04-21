@@ -16,11 +16,13 @@ function displayInfo() {
     let $sexMen = document.querySelector('.sexMen').checked;
     let $sexWoman = document.querySelector('.sexWoman').checked;
     let $p = document.querySelector('p');
-    console.log($input);
+    let $wrapper = document.querySelector('.wrapper');
+    console.log($wrapper);
+    /* console.log($input);
     console.log($age);
     console.log($sexMen);
     console.log($sexWoman);
-    console.log('Test button');
+    console.log('Test button'); */
 
     if ($input.length === 0) {
         $p.textContent = 'Podaj imie!!!';
@@ -30,13 +32,14 @@ function displayInfo() {
         $p.textContent = 'Podaj wiek!!!';
         return;
     }
-    if (($sexMen && $sexWoman) === false) {
+    if ((!$sexMen && !$sexWoman)) {
         $p.textContent = 'Wybierz płeć';
         return;
     }
 
     if ($sexMen) {
-        console.log();
+
+
         $p.textContent = 'Witaj Panie ' + $input + '. Masz ' + $age + ' lata.';
         //wyswietl dane
     } else if ($sexWoman) {
@@ -46,7 +49,7 @@ function displayInfo() {
         $p.textContent = 'Podaj dane';
     }
 
-    dzialanie();
+    $wrapper.style.display = 'none';
 }
 
 $checkInfo.addEventListener('click', displayInfo);
