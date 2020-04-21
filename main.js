@@ -10,8 +10,9 @@ po kliknięciu wykonaj ma byc powitanie 'witaj Panie Pani w zależności od sex 
 
 let $checkInfo = document.querySelector('.checkInfo');
 let $wrapper_calc = document.querySelector('.wrapper-calculator');
-$wrapper_calc.style.display = 'none';
+let $wyliczDzialanie = document.querySelector('.wyliczDzialanie');
 
+$wrapper_calc.style.display = 'none';
 
 function displayInfo() {
     let $input = document.querySelector('.inputName').value;
@@ -20,13 +21,6 @@ function displayInfo() {
     let $sexWoman = document.querySelector('.sexWoman').checked;
     let $p = document.querySelector('p');
     let $wrapper = document.querySelector('.wrapper');
-
-    console.log($wrapper);
-    /* console.log($input);
-    console.log($age);
-    console.log($sexMen);
-    console.log($sexWoman);
-    console.log('Test button'); */
 
     if ($input.length === 0) {
         $p.textContent = 'Podaj imie!!!';
@@ -42,19 +36,34 @@ function displayInfo() {
     }
 
     if ($sexMen) {
-
-
         $p.textContent = 'Witaj Panie ' + $input + '. Masz ' + $age + ' lata.';
-        //wyswietl dane
     } else if ($sexWoman) {
         $p.textContent = 'Witaj Pani ' + $input + '. Masz ' + $age + ' lata.';
-        //wyswietl dane
     } else {
         $p.textContent = 'Podaj dane';
     }
-
     $wrapper.style.display = 'none';
     $wrapper_calc.style.display = 'block';
 }
 
+function calculator() {
+    let $number1 = document.querySelector('.number1').value;
+    let $number2 = document.querySelector('.number2').value;
+    let $showResult = document.querySelector('.showResult');
+    let result = undefined;
+    let $choice = document.querySelector('#rodzajDzialania').value;
+
+    if ($choice === '+') {
+        result = Number($number1) + Number($number2);
+    } else if ($choice === '-') {
+        result = $number1 - $number2;
+    } else if ($choice === '*') {
+        result = $number1 * $number2;
+    } else if ($choice === '/') {
+        result = $number1 / $number2;
+    }
+    $showResult.textContent = result;
+}
+
+$wyliczDzialanie.addEventListener('click', calculator);
 $checkInfo.addEventListener('click', displayInfo);
